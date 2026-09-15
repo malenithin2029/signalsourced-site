@@ -3,79 +3,296 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0a" />
   <title>SignalSourced — Signal-based outbound for B2B web agencies</title>
-  <meta name="description" content="SignalSourced helps B2B web agencies create more qualified sales conversations by finding companies with reasons to buy now and reaching the right decision-makers with personalized outbound." />
+  <meta name="description" content="SignalSourced helps B2B web agencies find good-fit companies with relevant buying signals and start qualified sales conversations with the right decision-makers." />
   <style>
-    :root{--bg:#0a0a0a;--panel:#121212;--muted:#a8a8a8;--text:#f6f6f6;--line:#262626;--accent:#6ea8ff;--accent2:#8b7cff;--max:1160px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
-    a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.nav{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.84);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}.navin{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;letter-spacing:-.03em;font-size:21px}.brand span{color:var(--accent)}.links{display:flex;gap:24px;align-items:center;color:#cfcfcf;font-size:14px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:10px;background:var(--accent);color:#111;font-weight:800;border:1px solid var(--accent);transition:.2s}.btn:hover{transform:translateY(-1px);background:#8bb9ff}.btn.ghost{background:transparent;color:var(--text);border-color:#3a3a3a}.hero{padding:88px 0 64px}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #303030;background:#111;padding:8px 12px;border-radius:999px;color:#d7d7d7;font-size:13px}.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)}h1{font-size:clamp(48px,8vw,92px);line-height:.95;letter-spacing:-.065em;margin:24px 0 22px;max-width:1000px}.green{color:var(--accent)}.lead{font-size:clamp(18px,2vw,22px);color:#bdbdbd;max-width:760px}.herocta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}.micro{margin-top:18px;color:#7f7f7f;font-size:13px}.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;color:#b6b6b6;font-size:14px}.stripin{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.strip b{color:white;display:block;font-size:15px;margin-bottom:2px}.section{padding:84px 0}.section h2{font-size:clamp(34px,5vw,58px);letter-spacing:-.045em;line-height:1.05;margin:0 0 18px}.sub{color:var(--muted);max-width:760px;font-size:18px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}.card{border:1px solid var(--line);background:linear-gradient(180deg,#121212,#0f0f0f);padding:24px;border-radius:18px}.num{color:var(--accent);font-weight:800;font-size:13px}.card h3{font-size:21px;margin:12px 0 8px}.card p{color:#9f9f9f;margin:0}.flow{margin-top:36px;border:1px solid var(--line);border-radius:18px;overflow:hidden}.flowrow{display:grid;grid-template-columns:170px 1fr;gap:24px;padding:22px 24px;border-bottom:1px solid var(--line)}.flowrow:last-child{border-bottom:none}.flowrow b{color:var(--accent)}.signalbox{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}.signal-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.pill{border:1px solid #343434;border-radius:999px;padding:9px 12px;color:#c9c9c9;background:#111;font-size:14px}.quote{font-size:26px;line-height:1.3;letter-spacing:-.02em}.price{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:36px}.pricebox{border:1px solid #263f66;background:linear-gradient(180deg,rgba(110,168,255,.10),rgba(139,124,255,.03));border-radius:20px;padding:28px}.tag{color:#111;background:var(--accent);display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900}.amount{font-size:58px;font-weight:900;letter-spacing:-.05em;margin:16px 0 4px}.small{color:#a8a8a8}.check{display:grid;gap:10px;margin:22px 0}.check div:before{content:"✓";color:var(--accent);font-weight:900;margin-right:10px}.faq{display:grid;gap:10px;margin-top:30px}.faq details{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:#101010}.faq summary{cursor:pointer;font-weight:750}.faq p{color:#aaa}.cta{padding:84px 0}.ctabox{border:1px solid #263f66;background:radial-gradient(circle at top right,rgba(110,168,255,.16),transparent 45%),#111;border-radius:24px;padding:42px}.ctabox h2{margin-top:0}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}.form input,.form textarea{width:100%;background:#0b0b0b;border:1px solid #303030;color:white;padding:14px;border-radius:10px;font:inherit}.form textarea{grid-column:1/-1;min-height:120px}.form .btn{grid-column:1/-1;cursor:pointer}.note{color:#777;font-size:12px;margin-top:10px}.footer{border-top:1px solid var(--line);padding:28px 0 42px;color:#777;font-size:13px}.footerin{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    @media(max-width:820px){.links a:not(.btn){display:none}.stripin,.grid3,.signalbox,.price{grid-template-columns:1fr}.flowrow{grid-template-columns:1fr;gap:6px}.form{grid-template-columns:1fr}.hero{padding-top:64px}.wrap{width:min(var(--max),calc(100% - 28px))}}
+    :root{
+      --bg:#0a0a0a;
+      --panel:#111318;
+      --panel2:#0f1116;
+      --text:#f7f8fa;
+      --muted:#a8adb8;
+      --soft:#7f8590;
+      --line:#262a33;
+      --accent:#6ea8ff;
+      --accent2:#8b7cff;
+      --accent-soft:rgba(110,168,255,.10);
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 75% -10%,rgba(110,168,255,.11),transparent 34%),radial-gradient(circle at 25% 20%,rgba(139,124,255,.06),transparent 28%)}
+    ::selection{background:rgba(110,168,255,.28)}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .nav{position:sticky;top:0;z-index:30;background:rgba(10,10,10,.84);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .navin{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:850;letter-spacing:-.035em;font-size:21px}.brand span{color:var(--accent)}
+    .links{display:flex;gap:24px;align-items:center;color:#cfd3db;font-size:14px}.links>a:not(.btn):hover{color:white}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#8cb9ff);color:#0b0d11;font-weight:850;border:1px solid transparent;transition:transform .18s ease,filter .18s ease,border-color .18s ease;cursor:pointer}
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.04)}
+    .btn.ghost{background:transparent;color:var(--text);border-color:#363b45}.btn.ghost:hover{border-color:#565d69}
+    .btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid rgba(110,168,255,.42);outline-offset:3px}
+    .hero{padding:90px 0 68px}
+    .eyebrow{display:inline-flex;gap:9px;align-items:center;border:1px solid #303540;background:rgba(17,19,24,.85);padding:8px 12px;border-radius:999px;color:#d7dbe3;font-size:13px}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(110,168,255,.9)}
+    h1{font-size:clamp(48px,8vw,92px);line-height:.96;letter-spacing:-.065em;margin:24px 0 22px;max-width:1020px}
+    h2{font-size:clamp(34px,5vw,58px);line-height:1.05;letter-spacing:-.045em;margin:0 0 18px}
+    h3{letter-spacing:-.025em}
+    .accent{color:var(--accent)}
+    .lead{font-size:clamp(18px,2vw,22px);color:#bec3cd;max-width:800px}
+    .herocta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+    .micro{margin-top:18px;color:#858b96;font-size:13px}
+    .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;color:#aeb4bf;font-size:14px;background:rgba(255,255,255,.008)}
+    .stripin{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.strip b{color:white;display:block;font-size:15px;margin-bottom:3px}
+    .section{padding:86px 0}.sub{color:var(--muted);max-width:800px;font-size:18px}
+    .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:850;margin-bottom:13px}
+    .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:stretch;margin-top:34px}
+    .statement{border:1px solid #2a3240;background:linear-gradient(180deg,rgba(110,168,255,.08),rgba(139,124,255,.035));border-radius:20px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px}
+    .statement .big{font-size:clamp(28px,4vw,45px);line-height:1.08;letter-spacing:-.045em;margin:0 0 28px}.statement .small{max-width:520px}
+    .missionlist{display:grid;gap:14px}.missionitem{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--panel2));padding:20px 22px;border-radius:16px}.missionitem b{display:block;margin-bottom:5px}.missionitem p{margin:0;color:#9fa5b0}
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+    .card{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--panel2));padding:24px;border-radius:18px}
+    .card .icon{width:38px;height:38px;border-radius:11px;background:var(--accent-soft);border:1px solid rgba(110,168,255,.2);display:grid;place-items:center;color:var(--accent);font-weight:900;margin-bottom:18px}
+    .num{color:var(--accent);font-weight:850;font-size:12px;letter-spacing:.05em}.card h3{font-size:21px;margin:10px 0 8px}.card p{color:#9fa5b0;margin:0}
+    .method{margin-top:36px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#0e1014}
+    .methodrow{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:23px 26px;border-bottom:1px solid var(--line)}.methodrow:last-child{border-bottom:none}.methodrow b{color:var(--accent)}.methodrow strong{display:block;margin-bottom:4px}.methodrow span{color:#a3a9b4}
+    .signalbox{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}.signal-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.pill{border:1px solid #343944;border-radius:999px;padding:9px 12px;color:#ccd1da;background:#11141a;font-size:14px}
+    .quote{font-size:clamp(23px,3vw,31px);line-height:1.3;letter-spacing:-.025em;margin:12px 0 18px}.small{color:#9ba1ac}.muted{color:var(--muted)}
+    .guardrails{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}.guard{padding:20px;border:1px solid var(--line);border-radius:16px;background:#0f1115}.guard b{display:block;margin-bottom:8px}.guard p{margin:0;color:#9fa5b0}
+    .price{display:grid;grid-template-columns:1.08fr .92fr;gap:18px;margin-top:36px}.pricebox{border:1px solid #2b4265;background:linear-gradient(180deg,rgba(110,168,255,.10),rgba(139,124,255,.035));border-radius:20px;padding:28px}.tag{color:#0b0d11;background:var(--accent);display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900}.amount{font-size:58px;font-weight:900;letter-spacing:-.055em;margin:16px 0 2px}.check{display:grid;gap:10px;margin:22px 0}.check div:before{content:"✓";color:var(--accent);font-weight:900;margin-right:10px}.nope div:before{content:"—";color:#7f8590}
+    .faq{display:grid;gap:10px;margin-top:30px}.faq details{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:#101216}.faq summary{cursor:pointer;font-weight:780}.faq p{color:#a3a9b4;margin-bottom:2px}
+    .cta{padding:86px 0}.ctabox{border:1px solid #2b4265;background:radial-gradient(circle at top right,rgba(110,168,255,.17),transparent 42%),#101217;border-radius:24px;padding:42px}
+    .applygrid{display:grid;grid-template-columns:.75fr 1.25fr;gap:26px;margin-top:28px;align-items:start}.nextbox{border:1px solid var(--line);background:rgba(7,8,11,.5);border-radius:16px;padding:22px}.nextbox h3{margin:0 0 12px}.nextsteps{display:grid;gap:14px}.nextstep{display:grid;grid-template-columns:28px 1fr;gap:10px;color:#b4bac4}.nextstep span:first-child{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:rgba(110,168,255,.1);color:var(--accent);font-size:12px;font-weight:900}
+    .form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;color:#c8cdd6;font-weight:700}.field input,.field select,.field textarea{width:100%;background:#0a0c10;border:1px solid #323743;color:white;padding:13px 14px;border-radius:10px;outline:none;transition:border-color .18s ease,box-shadow .18s ease}.field input::placeholder,.field textarea::placeholder{color:#656b75}.field input:focus,.field select:focus,.field textarea:focus{border-color:#577fb9;box-shadow:0 0 0 3px rgba(110,168,255,.09)}.field textarea{min-height:112px;resize:vertical}.form .btn{grid-column:1/-1;min-height:48px}.note{color:#858b96;font-size:12px;margin-top:11px}.status{min-height:20px;color:#b8cee9;font-size:13px;margin-top:10px}
+    .footer{border-top:1px solid var(--line);padding:30px 0 44px;color:#7f8590;font-size:13px}.footerin{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer strong{color:#cbd0d8;font-weight:700}
+    @media(max-width:960px){.grid4{grid-template-columns:repeat(2,1fr)}.split,.price,.applygrid{grid-template-columns:1fr}.statement{min-height:auto}}
+    @media(max-width:820px){.links a:not(.btn){display:none}.stripin,.grid3,.signalbox,.guardrails{grid-template-columns:1fr}.methodrow{grid-template-columns:1fr;gap:5px}.hero{padding-top:64px}.wrap{width:min(var(--max),calc(100% - 28px))}.ctabox{padding:28px}.form{grid-template-columns:1fr}.field.full,.form .btn{grid-column:1}.grid4{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <nav class="nav"><div class="wrap navin"><a class="brand" href="#">Signal<span>Sourced</span></a><div class="links"><a href="#how">How it works</a><a href="#pilot">Pilot</a><a href="#faq">FAQ</a><a class="btn" href="#contact">Apply for pilot</a></div></div></nav>
-
-  <main>
-    <section class="hero"><div class="wrap">
-      <div class="eyebrow"><span class="dot"></span> Built for B2B web design & development agencies</div>
-      <h1>Turn buying signals into <span class="green">qualified sales conversations.</span></h1>
-      <p class="lead">We help web agencies find companies with a reason to buy now, identify the right decision-makers, and run personalized outbound that starts relevant conversations.</p>
-      <div class="herocta"><a class="btn" href="#contact">Apply for the founding pilot</a><a class="btn ghost" href="#how">See the system</a></div>
-      <div class="micro">No giant scraped lists. No fake personalization. No guaranteed-meeting gimmicks.</div>
-    </div></section>
-
-    <section class="strip"><div class="wrap stripin">
-      <div><b>ICP fit</b>Target companies that actually match your offer.</div>
-      <div><b>Buying signals</b>Prioritize accounts with a reason to act now.</div>
-      <div><b>Right person</b>Reach founders and marketing decision-makers.</div>
-      <div><b>Right timing</b>Use verified context instead of generic blasts.</div>
-    </div></section>
-
-    <section class="section" id="how"><div class="wrap">
-      <h2>Outbound should start with <span class="green">why now.</span></h2>
-      <p class="sub">Most outbound starts with a database filter and ends with a generic sequence. We start with fit, then look for verifiable events that make a buying conversation more plausible.</p>
-      <div class="grid3">
-        <div class="card"><div class="num">01 — FIT</div><h3>Define the right accounts</h3><p>Industry, company size, geography, project economics, decision-maker and exclusion criteria.</p></div>
-        <div class="card"><div class="num">02 — SIGNAL</div><h3>Find reasons to buy now</h3><p>Funding, new marketing leadership, hiring, expansion, launches, rebrands and visible positioning gaps.</p></div>
-        <div class="card"><div class="num">03 — CONVERSATION</div><h3>Reach the right person</h3><p>Research-led messaging to the person most likely to own the problem and budget.</p></div>
+  <nav class="nav">
+    <div class="wrap navin">
+      <a class="brand" href="#top" aria-label="SignalSourced home">Signal<span>Sourced</span></a>
+      <div class="links">
+        <a href="#mission">Mission</a>
+        <a href="#method">Method</a>
+        <a href="#pilot">Pilot</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn" href="#contact">Apply for pilot</a>
       </div>
-      <div class="flow">
-        <div class="flowrow"><b>Step 1</b><span>Define your highest-value client profile and what one new project is worth.</span></div>
-        <div class="flowrow"><b>Step 2</b><span>Build a focused account list and track relevant public buying signals.</span></div>
-        <div class="flowrow"><b>Step 3</b><span>Identify and verify the most relevant decision-makers.</span></div>
-        <div class="flowrow"><b>Step 4</b><span>Research, score and personalize outreach around verified context.</span></div>
-        <div class="flowrow"><b>Step 5</b><span>Run follow-ups, route interested replies and improve based on real campaign data.</span></div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow"><span class="dot"></span> Built for B2B web design & development agencies</div>
+        <h1>Turn relevant buying signals into <span class="accent">qualified sales conversations.</span></h1>
+        <p class="lead">SignalSourced helps web agencies find good-fit companies with a reason to buy now, identify the right decision-makers, and run thoughtful outbound built around verified context—not volume for volume’s sake.</p>
+        <div class="herocta">
+          <a class="btn" href="#contact">Apply for the founding pilot</a>
+          <a class="btn ghost" href="#method">See our method</a>
+        </div>
+        <div class="micro">Focused accounts. Verified signals. Human-reviewed messaging. Clear reporting.</div>
       </div>
-    </div></section>
+    </section>
 
-    <section class="section"><div class="wrap signalbox">
-      <div class="card"><div class="num">SIGNALS WE CAN RESEARCH</div><h3>Context that makes timing matter</h3><div class="signal-list"><span class="pill">Recent funding</span><span class="pill">New CMO / VP Marketing</span><span class="pill">Marketing hiring</span><span class="pill">New product launch</span><span class="pill">Geographic expansion</span><span class="pill">Rebrand</span><span class="pill">Website / positioning gap</span><span class="pill">New service or market</span></div></div>
-      <div class="card"><div class="num">THE PRINCIPLE</div><p class="quote">“ICP tells us <b>who</b> might buy. Signals tell us <b>why now</b>. Decision-makers tell us <b>who to contact</b>.”</p><p class="small">Signals are hypotheses, not proof of need. We verify facts before using them in outreach.</p></div>
-    </div></section>
-
-    <section class="section" id="pilot"><div class="wrap">
-      <h2>Founding Partner <span class="green">Pilot</span></h2>
-      <p class="sub">We are onboarding two web agencies for the first version of our signal-based outbound system. The goal is to build the process together, measure real results, and earn the right to scale it.</p>
-      <div class="price">
-        <div class="pricebox"><span class="tag">2 FOUNDING PARTNER SPOTS</span><div class="amount">$750</div><div class="small">30-day managed pilot · no long-term contract</div><div class="check"><div>ICP and signal strategy</div><div>Target account research</div><div>Decision-maker identification</div><div>Email verification workflow</div><div>Personalized outreach sequence</div><div>Campaign management and optimization</div><div>Interested replies routed to you</div></div><a class="btn" href="#contact">Apply for a pilot spot</a></div>
-        <div class="card"><div class="num">GOOD FIT</div><h3>This is probably for you if...</h3><div class="check"><div>You run a 2–20 person web agency</div><div>Your typical project is $5k+</div><div>You already have strong delivery and a portfolio</div><div>You have room for more good-fit projects</div><div>You want a repeatable pipeline beyond referrals</div></div><p class="small">Client-owned data/sending infrastructure costs, if needed, are separate and agreed before purchase.</p></div>
+    <section class="strip" aria-label="SignalSourced principles">
+      <div class="wrap stripin">
+        <div><b>ICP fit</b>Target companies that actually match your offer.</div>
+        <div><b>Relevant signal</b>Look for a credible reason the timing may matter.</div>
+        <div><b>Right person</b>Reach the person most likely to own the problem.</div>
+        <div><b>Right timing</b>Use verified context instead of generic blasts.</div>
       </div>
-    </div></section>
+    </section>
 
-    <section class="section" id="faq"><div class="wrap"><h2>FAQ</h2><div class="faq">
-      <details><summary>Do you guarantee a specific number of meetings?</summary><p>No. We do not make performance claims we cannot substantiate. The pilot covers strategy, research, outreach execution and optimization. Results depend on offer, market, list quality, deliverability and sales follow-up.</p></details>
-      <details><summary>Is this mass cold email?</summary><p>No. The approach is intentionally narrower: qualify accounts, verify relevant context, prioritize the strongest signals, and then personalize outreach to the appropriate decision-maker.</p></details>
-      <details><summary>Who is this built for?</summary><p>Initially, founder-led B2B web design and development agencies with strong delivery, meaningful project values, and capacity for additional clients.</p></details>
-      <details><summary>What happens after the 30-day pilot?</summary><p>We review the data together. If the process is showing promise, we can discuss an ongoing engagement. There is no automatic long-term commitment.</p></details>
-    </div></div></section>
+    <section class="section" id="mission">
+      <div class="wrap">
+        <div class="kicker">Why we exist</div>
+        <h2>Make outbound more <span class="accent">relevant, respectful and useful.</span></h2>
+        <p class="sub">Great agencies should not have to choose between waiting on referrals and becoming a spam machine. Our mission is to help capable web agencies build a more intentional path to new business—one grounded in fit, timing and honest research.</p>
+        <div class="split">
+          <div class="statement">
+            <p class="big">We believe the best outbound feels less like interruption and more like <span class="accent">good timing.</span></p>
+            <p class="small">The goal is not to contact everyone. It is to earn attention from the right few by being relevant enough to start a useful conversation.</p>
+          </div>
+          <div class="missionlist">
+            <div class="missionitem"><b>Relevance over volume</b><p>We would rather research 100 plausible accounts than spray 10,000 generic contacts.</p></div>
+            <div class="missionitem"><b>Evidence over assumptions</b><p>Signals are hypotheses. We verify the facts before using them in a message.</p></div>
+            <div class="missionitem"><b>Human judgment over blind automation</b><p>AI can accelerate research and drafting, but judgment stays in the loop where it matters.</p></div>
+            <div class="missionitem"><b>Conversations over vanity metrics</b><p>Open rates and list size are secondary. The real objective is relevant replies and qualified sales conversations.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section class="cta" id="contact"><div class="wrap"><div class="ctabox"><h2>Want us to map the first signals in your market?</h2><p class="sub">Tell us what your agency sells and who your best clients are. We’ll use that to evaluate whether the pilot is a fit.</p>
-      <form class="form" onsubmit="event.preventDefault();document.getElementById('formmsg').textContent='Thanks — the form is in preview mode. Booking/contact connection is being finalized before public launch.';">
-        <input required placeholder="Your name" aria-label="Your name"/><input required type="email" placeholder="Work email" aria-label="Work email"/><input placeholder="Agency website" aria-label="Agency website"/><input placeholder="Typical project value" aria-label="Typical project value"/><textarea placeholder="Who are your best clients today?"></textarea><button class="btn" type="submit">Apply for founding pilot</button>
-      </form><div id="formmsg" class="note">Preview build: form submission is intentionally not connected until the business inbox / booking flow is approved.</div>
-    </div></div></section>
+    <section class="section">
+      <div class="wrap">
+        <div class="kicker">Our operating values</div>
+        <h2>Simple principles that shape <span class="accent">every campaign.</span></h2>
+        <div class="grid4">
+          <div class="card"><div class="icon">01</div><h3>Be specific</h3><p>Narrow ICPs, explicit exclusions and concrete signals beat vague targeting.</p></div>
+          <div class="card"><div class="icon">02</div><h3>Be truthful</h3><p>No fabricated personalization, fake familiarity or invented intent.</p></div>
+          <div class="card"><div class="icon">03</div><h3>Protect reputation</h3><p>List quality, verification and responsible sending matter as much as copy.</p></div>
+          <div class="card"><div class="icon">04</div><h3>Learn from data</h3><p>We use replies, objections and conversion data to improve the system—not guesswork.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="wrap">
+        <div class="kicker">The SignalSourced method</div>
+        <h2>Start with <span class="accent">why now</span>, then earn the conversation.</h2>
+        <p class="sub">Our method is intentionally simple: understand the economics, define the right accounts, identify credible triggers, find the decision-maker, and write outreach around verified context.</p>
+        <div class="method">
+          <div class="methodrow"><b>Step 1 · Economics</b><div><strong>Understand what a good client is worth.</strong><span>We clarify project value, capacity and where outbound can make commercial sense.</span></div></div>
+          <div class="methodrow"><b>Step 2 · ICP</b><div><strong>Define the companies worth pursuing.</strong><span>Industry, size, geography, use case, decision-maker and clear exclusion criteria.</span></div></div>
+          <div class="methodrow"><b>Step 3 · Signals</b><div><strong>Look for a reason the timing may matter.</strong><span>Funding, leadership changes, hiring, launches, expansion, rebrands or visible website/positioning gaps.</span></div></div>
+          <div class="methodrow"><b>Step 4 · Research</b><div><strong>Verify the account and the person.</strong><span>We validate the signal, identify the likely owner of the problem, verify contact data and score the opportunity.</span></div></div>
+          <div class="methodrow"><b>Step 5 · Outreach</b><div><strong>Start a relevant conversation.</strong><span>Short, contextual messaging, responsible follow-up and clear routing of interested replies.</span></div></div>
+          <div class="methodrow"><b>Step 6 · Learn</b><div><strong>Improve from real market feedback.</strong><span>We review reply quality, objections and conversion points, then refine the ICP, signals and message.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap signalbox">
+        <div class="card">
+          <div class="num">SIGNALS WE CAN RESEARCH</div>
+          <h3>Context that can make timing matter</h3>
+          <p>We do not treat a signal as proof that someone wants a new website. We treat it as a reason to investigate further.</p>
+          <div class="signal-list">
+            <span class="pill">Recent funding</span><span class="pill">New CMO / VP Marketing</span><span class="pill">Marketing hiring</span><span class="pill">New product launch</span><span class="pill">Geographic expansion</span><span class="pill">Rebrand</span><span class="pill">Website / positioning gap</span><span class="pill">New service or market</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="num">THE CORE IDEA</div>
+          <p class="quote">“ICP tells us <b>who</b> might buy. Signals tell us <b>why now</b>. Decision-makers tell us <b>who to contact</b>.”</p>
+          <p class="small">Then timing, research quality and the offer determine whether outreach is worth sending.</p>
+        </div>
+      </div>
+      <div class="wrap guardrails">
+        <div class="guard"><b>What we do</b><p>Build focused lists, verify context, prioritize stronger opportunities, personalize responsibly and report what the market is telling us.</p></div>
+        <div class="guard"><b>What we do not do</b><p>Blast giant scraped lists, fabricate “personalization,” hide behind vanity metrics or promise a meeting count we have not earned.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="pilot">
+      <div class="wrap">
+        <div class="kicker">Founding partner offer</div>
+        <h2>A focused 30-day pilot to <span class="accent">prove the process.</span></h2>
+        <p class="sub">We are onboarding two web agencies for the first version of the SignalSourced system. The goal is to build a disciplined outbound process together, measure the real market response, and earn the right to scale it.</p>
+        <div class="price">
+          <div class="pricebox">
+            <span class="tag">2 FOUNDING PARTNER SPOTS</span>
+            <div class="amount">$750</div>
+            <div class="small">30-day managed pilot · no long-term contract</div>
+            <div class="check">
+              <div>ICP, economics and exclusion criteria</div>
+              <div>Buying-signal strategy</div>
+              <div>Target-account and decision-maker research</div>
+              <div>Business-email verification workflow</div>
+              <div>Research-led outreach sequence</div>
+              <div>Campaign management and iteration</div>
+              <div>Interested replies routed to you</div>
+              <div>End-of-pilot findings and next-step recommendation</div>
+            </div>
+            <a class="btn" href="#contact">Apply for a pilot spot</a>
+          </div>
+          <div class="card">
+            <div class="num">BEST FIT</div>
+            <h3>Built for agencies where one good project matters.</h3>
+            <div class="check">
+              <div>2–20 person web design/development agency</div>
+              <div>Typical project value around $5k+</div>
+              <div>Strong delivery, portfolio and case studies</div>
+              <div>Capacity for additional good-fit projects</div>
+              <div>Founder still involved in growth or sales</div>
+              <div>Want a pipeline beyond referrals alone</div>
+            </div>
+            <div class="check nope">
+              <div>Not designed for brand-new agencies with no proof of delivery</div>
+              <div>Not a fit for low-ticket, high-volume website offers</div>
+            </div>
+            <p class="small">Client-owned data or sending-infrastructure costs, if needed, are separate and agreed before any purchase.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="kicker">Questions</div>
+        <h2>FAQ</h2>
+        <div class="faq">
+          <details><summary>Do you guarantee a specific number of meetings?</summary><p>No. We do not make performance claims we cannot substantiate. The pilot covers strategy, research, outreach execution and optimization. Results depend on the offer, market, targeting, deliverability and sales follow-up.</p></details>
+          <details><summary>Is this mass cold email?</summary><p>No. The approach is intentionally narrower: qualify accounts, verify relevant context, prioritize stronger opportunities, then personalize outreach to the appropriate decision-maker.</p></details>
+          <details><summary>Does a “buying signal” mean the company definitely wants a new website?</summary><p>No. A signal is a research trigger, not proof of intent. We use it to form a better hypothesis about timing and then verify the surrounding context before outreach.</p></details>
+          <details><summary>Who is this built for?</summary><p>Initially, founder-led B2B web design and development agencies with strong delivery, meaningful project values and capacity for additional clients.</p></details>
+          <details><summary>What happens after the 30-day pilot?</summary><p>We review the data together. If the process is showing promise, we can discuss an ongoing engagement. There is no automatic long-term commitment.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="wrap">
+        <div class="ctabox">
+          <div class="kicker">Founding partner application</div>
+          <h2>Tell us where you want your <span class="accent">next good client</span> to come from.</h2>
+          <p class="sub">A few details are enough for us to understand your economics, capacity and ideal customer. If the pilot looks like a fit, the next step is a short plan for your market—not a generic sales deck.</p>
+          <div class="applygrid">
+            <aside class="nextbox">
+              <h3>What happens next</h3>
+              <div class="nextsteps">
+                <div class="nextstep"><span>1</span><div>We review your offer, project value and target customer.</div></div>
+                <div class="nextstep"><span>2</span><div>We check whether signal-based outbound makes sense for your market.</div></div>
+                <div class="nextstep"><span>3</span><div>If there is a fit, we send the recommended starting approach and a booking link.</div></div>
+              </div>
+              <p class="note">No spam. Your details are only used to review the application and respond about the pilot.</p>
+            </aside>
+
+            <form class="form" id="pilot-form" novalidate>
+              <div class="field"><label for="name">Your name *</label><input id="name" name="name" required autocomplete="name" placeholder="Jane Smith" /></div>
+              <div class="field"><label for="email">Work email *</label><input id="email" name="email" required type="email" autocomplete="email" placeholder="jane@agency.com" /></div>
+              <div class="field"><label for="website">Agency website *</label><input id="website" name="website" required type="url" inputmode="url" placeholder="https://agency.com" /></div>
+              <div class="field"><label for="team">Team size</label><select id="team" name="team"><option value="">Select</option><option>1</option><option>2–5</option><option>6–10</option><option>11–20</option><option>21+</option></select></div>
+              <div class="field"><label for="project-value">Typical project value *</label><select id="project-value" name="project-value" required><option value="">Select</option><option>Under $5k</option><option>$5k–$10k</option><option>$10k–$25k</option><option>$25k–$50k</option><option>$50k+</option></select></div>
+              <div class="field"><label for="capacity">Capacity in the next 60 days</label><select id="capacity" name="capacity"><option value="">Select</option><option>1 new project</option><option>2 new projects</option><option>3+ new projects</option><option>Not sure yet</option></select></div>
+              <div class="field full"><label for="ideal-client">Who is your ideal client? *</label><textarea id="ideal-client" name="ideal-client" required placeholder="Example: Series A–B B2B SaaS companies in the US, 20–150 employees, typically working with a VP Marketing or founder."></textarea></div>
+              <div class="field full"><label for="pipeline">Where do most of your clients come from today?</label><input id="pipeline" name="pipeline" placeholder="Referrals, inbound, partnerships, outbound..." /></div>
+              <button class="btn" type="submit">Apply for the founding pilot →</button>
+              <div class="field full"><div class="note">Takes about 2 minutes. No payment is taken here.</div><div class="status" id="form-status" role="status" aria-live="polite"></div></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer"><div class="wrap footerin"><div>© 2026 SignalSourced. All rights reserved.</div><div>Signal-based outbound for B2B web agencies.</div></div></footer>
+  <footer class="footer">
+    <div class="wrap footerin">
+      <div><strong>SignalSourced</strong> · Signal-based outbound for B2B web agencies.</div>
+      <div>Relevance over volume · Evidence over assumptions · Human judgment in the loop</div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('pilot-form');
+    const status = document.getElementById('form-status');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        status.textContent = 'Please complete the required fields above.';
+        return;
+      }
+      status.textContent = 'Preview mode: your application has not been sent yet. We will connect the live form before the public launch.';
+    });
+  </script>
 </body>
 </html>
