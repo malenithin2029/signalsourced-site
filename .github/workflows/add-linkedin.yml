@@ -1,0 +1,41 @@
+name: Add SignalSourced LinkedIn link
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/add-linkedin.yml']
+permissions:
+  contents: write
+jobs:
+  update-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add company page to footer and organization data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          site = path.read_text(encoding='utf-8')
+          url = 'https://www.linkedin.com/company/signalsourced/'
+          old_footer = '<a href="/terms.html">Website Terms</a></div>'
+          new_footer = '<a href="/terms.html">Website Terms</a><a href="' + url + '" target="_blank" rel="noopener noreferrer" aria-label="SignalSourced on LinkedIn">LinkedIn ↗</a></div>'
+          if new_footer not in site:
+              assert site.count(old_footer) == 1, 'Footer marker missing or duplicated'
+              site = site.replace(old_footer, new_footer, 1)
+          old_schema = '"logo":"https://signalsourced.com/logo-mark.svg","email"'
+          new_schema = '"logo":"https://signalsourced.com/logo-mark.svg","sameAs":["' + url + '"],"email"'
+          if new_schema not in site:
+              assert site.count(old_schema) == 1, 'Organization JSON-LD marker missing or duplicated'
+              site = site.replace(old_schema, new_schema, 1)
+          assert site.count('aria-label="SignalSourced on LinkedIn"') == 1
+          assert site.count('"sameAs"') == 1
+          path.write_text(site, encoding='utf-8')
+          print('LinkedIn footer and Organization sameAs verified')
+          PY
+      - name: Commit and publish homepage
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Link SignalSourced LinkedIn page from website and structured data"
+          git push
