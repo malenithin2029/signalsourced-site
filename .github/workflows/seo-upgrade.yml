@@ -16,8 +16,10 @@ jobs:
     steps:
       - name: Check out current production source
         uses: actions/checkout@v4
-      - name: Apply tested homepage and page metadata patch
-        run: python scripts/seo_upgrade.py
+      - name: Apply SEO and logo patch to current layout
+        run: |
+          sed -i 's|    <!-- APPLY -->|    <section class="cta" id="contact">|' scripts/seo_upgrade.py
+          python scripts/seo_upgrade.py
       - name: Commit updated website
         run: |
           git config user.name "github-actions[bot]"
