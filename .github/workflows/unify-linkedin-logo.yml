@@ -1,0 +1,51 @@
+name: Use LinkedIn logo everywhere
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/unify-linkedin-logo.yml']
+permissions:
+  contents: write
+jobs:
+  unify-brand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install pillow
+      - name: Create images from supplied LinkedIn logo and update site
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64, io, json, pathlib, re
+          from PIL import Image
+          # Cropped and scaled derivative of the actual image supplied by the owner.
+          source = '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'
+          logo = Image.open(io.BytesIO(base64.b64decode(source))).convert('RGB')
+          assert logo.size == (128,128), 'Logo asset corrupted'
+          logo.resize((256,256),Image.Resampling.LANCZOS).save('brand-icon.png',optimize=True)
+          logo.resize((180,180),Image.Resampling.LANCZOS).save('apple-touch-icon.png',optimize=True)
+          logo.save('favicon.ico',sizes=[(16,16),(32,32),(48,48),(64,64)])
+          src = pathlib.Path('index.html')
+          html = src.read_text()
+          assert 'href="/logo-mark.svg"' in html
+          assert 'src="/logo-mark.svg"' in html
+          html=html.replace('<link rel="icon" type="image/svg+xml" href="/logo-mark.svg" />','<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" /><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />')
+          html=html.replace('src="/logo-mark.svg"','src="/brand-icon.png?v=2"').replace('https://signalsourced.com/logo-mark.svg','https://signalsourced.com/brand-icon.png')
+          assert 'logo-mark.svg' not in html
+          src.write_text(html)
+          for filename in ['privacy.html','terms.html']:
+            page=pathlib.Path(filename)
+            if not page.exists(): continue
+            body=page.read_text()
+            if '<a href="/">SignalSourced</a>' in body:
+              body=body.replace('<a href="/">SignalSourced</a>','<a href="/" style="display:inline-flex;align-items:center;gap:8px"><img src="/brand-icon.png?v=2" width="28" height="28" alt="" style="border-radius:6px" />SignalSourced</a>')
+            body=body.replace('<meta name="viewport" content="width=device-width,initial-scale=1">','<meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico?v=2" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">')
+            page.write_text(body)
+          print('Updated matching logo, favicon, Apple icon and site references')
+          PY
+      - name: Commit matching logo and icon assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add brand-icon.png favicon.ico apple-touch-icon.png index.html privacy.html terms.html
+          git diff --cached --quiet || git commit -m 'Use same LinkedIn radar artwork for site logo and browser icons'
+          git push
