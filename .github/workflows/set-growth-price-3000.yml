@@ -1,0 +1,31 @@
+name: Set Growth Partner price to 3000
+on:
+  push:
+    paths:
+      - '.github/workflows/set-growth-price-3000.yml'
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update pricing and guarantee copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          s=s.replace('Pricing shared after fit review <span style="font-size:.36em;letter-spacing:0">· 6-month engagement</span>', '$3,000 <span style="font-size:.36em;letter-spacing:0">/ 6 months</span>')
+          s=s.replace('Client-owned data tools or sending infrastructure, if needed, are billed at agreed cost.', 'Client-owned infrastructure and data tools, if needed, are billed at cost.')
+          s=s.replace('Growth Partner guarantee: a defined number of qualified conversations / booked calls, documented in the agreement', 'Growth Partner guarantee: qualified conversations / booked calls, with the exact commitment defined in the agreement')
+          s=s.replace('Growth Partner: yes—a defined number of qualified conversations / booked calls is agreed in writing. We do not guarantee closed revenue or clients; what happens after the call depends on your offer, follow-up and sales process.', 'Growth Partner: yes—our guarantee is tied to qualified conversations / booked calls, with the exact commitment defined in the agreement. We do not guarantee closed revenue or clients; what happens after the call depends on your offer, follow-up and sales process.')
+          p.write_text(s)
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add index.html
+          git diff --cached --quiet || git commit -m "Set Growth Partner price to $3,000"
+          git push
