@@ -1,0 +1,36 @@
+name: Polish Growth Partner homepage
+
+on:
+  push:
+    paths:
+      - '.github/workflows/growth-partner-polish.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  polish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply small copy and navigation fixes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text()
+          s = s.replace("['home', 'mission', 'method', 'pilot', 'faq', 'contact']", "['home', 'mission', 'method', 'growth', 'faq', 'contact']")
+          s = s.replace('The pilot is designed around projects of roughly $5k+, but you are still welcome to apply.', 'SignalSourced is designed around projects of roughly $5k+, but you are still welcome to apply.')
+          old = "const rows = [['Name', val('name')], ['Work email', val('email')], ['Website', val('website')], ['Team size', val('team')], ['Project value', val('project-value')], ['Capacity', val('capacity')], ['Ideal client', val('ideal-client')], ['Clients today', val('pipeline')]];"
+          new = "const rows = [['Name', val('name')], ['Work email', val('email')], ['Website', val('website')], ['Team size', val('team')], ['Preferred start', val('interest')], ['Project value', val('project-value')], ['Capacity', val('capacity')], ['Ideal client', val('ideal-client')], ['Clients today', val('pipeline')]];"
+          assert old in s
+          s = s.replace(old, new)
+          p.write_text(s)
+          PY
+      - name: Commit polish
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Polish Growth Partner navigation and application" || exit 0
+          git push
