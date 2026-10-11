@@ -93,6 +93,7 @@
     .links a[data-nav].active{color:var(--strong);background:rgba(var(--a-rgb),.10)}
     .links a[data-nav].active::after{content:"";position:absolute;left:50%;bottom:3px;width:4px;height:4px;border-radius:50%;background:var(--accent);transform:translateX(-50%)}
     .links .btn{margin-left:10px}
+    .mobile-top-cta{display:none}
     .menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line-2);background:var(--panel);align-items:center;justify-content:center}
     .menu-btn span{display:block;width:18px;height:2px;background:var(--strong);border-radius:2px;position:relative;transition:background .2s}
     .menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--strong);border-radius:2px;transition:transform .25s var(--ease)}
@@ -431,7 +432,11 @@
     }
     @media(max-width:820px){
       .links{display:none}
-      .menu-btn{display:inline-flex}
+      .navin{gap:8px}
+      .brand{font-size:17px;gap:7px}
+      .brand .logo{width:30px;height:30px}
+      .mobile-top-cta{display:inline-flex;padding:10px 12px;font-size:13px;border-radius:10px;min-height:44px;margin-left:auto}
+      .menu-btn{display:inline-flex;flex:0 0 44px}
       .wrap{width:min(var(--max),calc(100% - 32px))}
       .hero{padding:36px 0 60px}
       .section{padding:76px 0}
@@ -472,6 +477,7 @@
         <a data-nav href="#mission">Mission</a><a data-nav href="#method">Method</a><a data-nav href="#growth">Growth Partner</a><a data-nav href="#faq">FAQ</a>
         <a class="btn sm" href="#contact">Apply for Growth Partner <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
+      <a class="btn sm mobile-top-cta" href="#contact" aria-label="Apply for Growth Partner">Apply</a>
       <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
     </div>
   </nav>
