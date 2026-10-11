@@ -1,0 +1,39 @@
+name: Restore Apply CTAs while keeping top Book a call
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/restore-apply-ctas.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore hero and Growth Partner CTAs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          calendly='https://calendly.com/nithin-signalsourced/signalsourced-discovery-call'
+          old=f'<div class="herocta reveal" style="--d:3"><a class="btn" href="{calendly}" target="_blank" rel="noopener noreferrer">Book a call <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ghost" href="#snapshot">Get a free Snapshot</a></div>'
+          new='<div class="herocta reveal" style="--d:3"><a class="btn" href="#contact">Apply for Growth Partner <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ghost" href="#snapshot">Get a free Snapshot</a></div>'
+          if old not in s:
+              raise SystemExit('Hero CTA pattern not found')
+          s=s.replace(old,new,1)
+          old2=f'<a class="btn" href="{calendly}" target="_blank" rel="noopener noreferrer">Book a call <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><p class="small" style="margin:16px 0 0">Client-owned infrastructure and data tools, if needed, are billed at cost.</p>'
+          new2='<a class="btn" href="#contact">Apply for Growth Partner <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><p class="small" style="margin:16px 0 0">Client-owned infrastructure and data tools, if needed, are billed at cost.</p>'
+          if old2 not in s:
+              raise SystemExit('Growth CTA pattern not found')
+          s=s.replace(old2,new2,1)
+          p.write_text(s)
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Restore Apply CTAs and keep top Book a call" || exit 0
+          git push
