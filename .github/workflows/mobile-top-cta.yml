@@ -1,0 +1,53 @@
+name: Add mobile top Apply CTA
+on:
+  push:
+    paths:
+      - '.github/workflows/mobile-top-cta.yml'
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update homepage CTA
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text()
+
+          old_css = '''    .links .btn{margin-left:10px}\n    .menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line-2);background:var(--panel);align-items:center;justify-content:center}'''
+          new_css = '''    .links .btn{margin-left:10px}\n    .mobile-top-cta{display:none}\n    .menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line-2);background:var(--panel);align-items:center;justify-content:center}'''
+          if old_css not in s:
+              raise SystemExit('Base nav CSS pattern not found')
+          s = s.replace(old_css, new_css, 1)
+
+          old_media = '''    @media(max-width:820px){\n      .links{display:none}\n      .menu-btn{display:inline-flex}'''
+          new_media = '''    @media(max-width:820px){\n      .links{display:none}\n      .navin{gap:8px}\n      .brand{font-size:17px;gap:7px}\n      .brand .logo{width:30px;height:30px}\n      .mobile-top-cta{display:inline-flex;padding:10px 12px;font-size:13px;border-radius:10px;min-height:44px;margin-left:auto}\n      .menu-btn{display:inline-flex;flex:0 0 44px}'''
+          if old_media not in s:
+              raise SystemExit('Mobile media pattern not found')
+          s = s.replace(old_media, new_media, 1)
+
+          old_nav = '''      <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>'''
+          new_nav = '''      <a class="btn sm mobile-top-cta" href="#contact" aria-label="Apply for Growth Partner">Apply</a>\n      <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>'''
+          if old_nav not in s:
+              raise SystemExit('Mobile nav button pattern not found')
+          s = s.replace(old_nav, new_nav, 1)
+
+          # Guardrail: keep guarantee non-numeric on the public site.
+          prohibited = ['5 booked calls', '10 booked calls', '15 booked calls', '20 booked calls', '5 qualified conversations', '10 qualified conversations', '15 qualified conversations', '20 qualified conversations']
+          lower = s.lower()
+          bad = [x for x in prohibited if x in lower]
+          if bad:
+              raise SystemExit('Specific public call-count promise found: ' + ', '.join(bad))
+
+          p.write_text(s)
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "malenithin2029"
+          git config user.email "malenithin2029@gmail.com"
+          git add index.html
+          git commit -m "Add mobile top Apply CTA" || exit 0
+          git push
