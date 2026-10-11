@@ -1,0 +1,36 @@
+name: Remove Growth Partner TBD placeholder
+
+on:
+  push:
+    paths:
+      - '.github/workflows/remove-growth-tbd.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove TBD price placeholder
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text()
+          old = '$[TBD] <span style="font-size:.36em;letter-spacing:0">/ 6 months</span>'
+          new = 'Pricing shared after fit review <span style="font-size:.36em;letter-spacing:0">· 6-month engagement</span>'
+          if old not in s:
+              raise SystemExit('TBD placeholder not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s)
+          PY
+      - name: Commit homepage update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Remove TBD from Growth Partner pricing" || exit 0
+          git push
